@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Instrumentos de Medición</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openAddInstrumentModal()">Añadir Instrumento</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item *ngFor="let instrument of instruments">
+      <ion-label>
+        <h2>{{ instrument.name }}</h2>
+        <p>{{ instrument.description }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" (click)="openInstrument(instrument)">Entrar al test</ion-button>
+        <ion-button fill="clear" color="danger" (click)="deleteInstrument(instrument)">Eliminar</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openAddInstrumentModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+
+
+
+

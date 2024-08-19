@@ -1,0 +1,7 @@
+{
+  "name": "instrumentosdeEvaluacion",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
