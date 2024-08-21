@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { jsPDF } from 'jspdf';  // Importa jsPDF
 
 @Component({
   selector: 'app-instrumentos-parte1',
@@ -25,8 +26,18 @@ export class InstrumentosParte1Page implements OnInit {
   }
 
   save() {
-    // Lógica para guardar la información
-    console.log('Información guardada:', this.name, this.evaluationDate);
+    // Lógica para generar y guardar la información en PDF
+    const doc = new jsPDF();
+    
+    // Agrega contenido al PDF
+    doc.text('Detalles del Instrumento', 10, 10);
+    doc.text(`Nombre del paciente: ${this.name}`, 10, 20);
+    doc.text(`Fecha de la evaluación: ${this.evaluationDate}`, 10, 30);
+    
+    // Guarda el PDF en el dispositivo
+    doc.save('formulario.pdf');
+    
+    console.log('PDF guardado con éxito');
   }
 
   modify() {
