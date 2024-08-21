@@ -8,9 +8,16 @@ import { NavController } from '@ionic/angular';
 })
 export class InstrumentosParte1Page implements OnInit {
 
-  constructor(private navCtrl: NavController) { }
+  name: string;              // Define la propiedad para el nombre del paciente
+  evaluationDate: string;    // Define la propiedad para la fecha de evaluación
+
+  constructor(private navCtrl: NavController) { 
+    this.name = '';           // Inicializa la propiedad name
+    this.evaluationDate = ''; // Inicializa la propiedad evaluationDate
+  }
 
   ngOnInit() {
+    // Código adicional si es necesario
   }
 
   goBack() {
@@ -19,12 +26,11 @@ export class InstrumentosParte1Page implements OnInit {
 
   save() {
     // Lógica para guardar la información
-    console.log('Información guardada');
+    console.log('Información guardada:', this.name, this.evaluationDate);
   }
 
   modify() {
     // Lógica para modificar la información
-    console.log('Información modificada');
+    console.log('Información modificada:', this.name, this.evaluationDate);
   }
 }
-
