@@ -1,31 +1,27 @@
-<ion-header [translucent]="true"> 
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Instrument Detail</ion-title>
+    <ion-title>Detalle del Instrumento</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Instrument Detail</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+  <!-- Eliminar el segundo ion-header innecesario -->
+  
   <ion-list>
-    <!-- Pregunta 1 -->
+    <!-- Pregunta 1: Nombre del paciente -->
     <ion-item>
-      <ion-label position="stacked">¿Cuál es el nombre del paciente?</ion-label>
+      <ion-label position="stacked">Nombre del paciente</ion-label>
       <ion-input [(ngModel)]="name" placeholder="Ingrese el nombre del paciente"></ion-input>
     </ion-item>
 
-    <!-- Pregunta 2 -->
+    <!-- Pregunta 2: Fecha de la evaluación -->
     <ion-item>
-      <ion-label position="stacked">¿Cuál es la fecha de la evaluación?</ion-label>
+      <ion-label position="stacked">Fecha de la evaluación</ion-label>
       <ion-datetime [(ngModel)]="evaluationDate" display-format="DD/MM/YYYY" placeholder="Seleccione una fecha"></ion-datetime>
     </ion-item>
   </ion-list>
 
-  <!-- Botones para guardar, modificar y volver a la pantalla anterior -->
+  <!-- Botones para guardar, modificar y volver -->
   <ion-footer>
     <ion-toolbar>
       <ion-buttons slot="start">
