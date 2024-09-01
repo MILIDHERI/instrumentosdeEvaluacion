@@ -13,8 +13,10 @@ interface Instrument {
 })
 export class Tab1Page {
   instruments: Instrument[] = [
-    { name: 'Test de Jebsen-Taylor', description: 'Medición de habilidades motoras finas' },
-    { name: 'Datos generales', description: 'Nombre,Fecha' }
+   
+    { name: 'Datos generales', description: 'Nombre,Fecha' },
+    { name: 'Entrar al test', description: 'Preguntas' }
+
   ];
 
   constructor(private alertCtrl: AlertController, private navCtrl: NavController) {}
