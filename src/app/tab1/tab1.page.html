@@ -1,35 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Instrumentos de Medición</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="openAddInstrumentModal()">Añadir Instrumento</ion-button>
-    </ion-buttons>
+    <ion-title>Datos del Paciente</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-
-    <ion-item *ngFor="let instrument of instruments">
-      <ion-label>
-        <h2>{{ instrument.name }}</h2>
-        <p>{{ instrument.description }}</p>
-      </ion-label>
-      <ion-buttons slot="end">
-        <ion-button fill="clear" (click)="openInstrument(instrument)">Entrar al test</ion-button>
-        <ion-button fill="clear" color="danger" (click)="deleteInstrument(instrument)">Eliminar</ion-button>
-      </ion-buttons>
+  <div class="ion-padding">
+    <ion-item>
+      <ion-label position="floating">Nombre del Paciente</ion-label>
+      <ion-input [(ngModel)]="patientName" required></ion-input>
     </ion-item>
-  </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="openAddInstrumentModal()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+    <ion-item>
+      <ion-label position="floating">Fecha del Test</ion-label>
+      <ion-input [(ngModel)]="testDate" type="date" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" (click)="goToTest()">Siguiente</ion-button>
+  </div>
 </ion-content>
-
-
-
-
-

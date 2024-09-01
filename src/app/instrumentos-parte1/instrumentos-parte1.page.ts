@@ -1,79 +1,70 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController } from '@ionic/angular';
-import { jsPDF } from 'jspdf';
-import { File } from '@awesome-cordova-plugins/file/ngx';
-import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router'; // Importa Router para la navegación
 
 @Component({
   selector: 'app-instrumentos-parte1',
   templateUrl: './instrumentos-parte1.page.html',
-  styleUrls: ['./instrumentos-parte1.page.scss'],
-  providers: [File, FileOpener]
+  styleUrls: ['./instrumentos-parte1.page.scss']
 })
-export class InstrumentosParte1Page implements OnInit {
+export class InstrumentosParte1Page {
+  answers: { [key: number]: string } = {};
+  correctAnswers: { [key: number]: string } = {
+    0: "2024",
+    1: "Primavera",
+    2: new Date().getDate().toString(),
+    3: new Date().toLocaleDateString('es-ES', { weekday: 'long' }),
+    4: new Date().toLocaleDateString('es-ES', { month: 'long' }),
+    5: "Chile",
+    6: "Valparaíso",
+    7: "Viña del Mar",
+    8: "Oficina",
+    9: "Primer piso"
+  };
 
-  name: string = '';          
-  evaluationDate: string = ''; 
+  questions = [
+    "¿En qué año estamos?",
+    "¿En qué estación del año?",
+    "¿Qué día del mes es hoy?",
+    "¿Qué día de la semana es hoy?",
+    "¿En qué mes del año estamos?",
+    "¿En qué país estamos?",
+    "¿En qué provincia estamos?",
+    "¿En qué ciudad estamos?",
+    "¿Dónde estamos en este momento?",
+    "¿En qué piso/planta estamos?"
+  ];
 
-  constructor(
-    private navCtrl: NavController, 
-    private file: File, 
-    private fileOpener: FileOpener, 
-    private alertCtrl: AlertController
-  ) {}
+  feedback: { [key: number]: string } = {};
+  sectionIndex = 0; // Para rastrear el índice de la pregunta actual
 
-  ngOnInit() {}
+  constructor(private router: Router) {}
 
-  // Método para navegar hacia atrás
-  goBack() {
-    this.navCtrl.back();
+  selectAnswer(isCorrect: boolean) {
+    // Compara la respuesta del paciente con la respuesta correcta
+    const correct = this.correctAnswers[this.sectionIndex] === 'Correcta'; // O el valor esperado
+    this.feedback[this.sectionIndex] = isCorrect === correct ? 'Correcto' : 'Incorrecto';
+    
+    // Avanzar a la siguiente pregunta
+    this.nextQuestion();
   }
 
-  // Método para guardar el PDF y abrirlo o mostrar la ruta
-  async save() {
-    if (!this.name || !this.evaluationDate) {
-      this.showAlert('Error', 'Por favor, completa todos los campos antes de guardar.');
-      return;
+  getCurrentQuestion() {
+    return this.questions[this.sectionIndex];
+  }
+
+  nextQuestion() {
+    if (this.sectionIndex < this.questions.length - 1) {
+      this.sectionIndex++;
     }
-  
-    const filePath = `${this.file.dataDirectory}formulario.pdf`;
-  
-    try {
-      // Crear el PDF con jsPDF
-      const doc = new jsPDF();
-      doc.text('Detalles del Instrumento', 10, 10);
-      doc.text(`Nombre del paciente: ${this.name}`, 10, 20);
-      doc.text(`Fecha de la evaluación: ${this.evaluationDate}`, 10, 30);
-  
-      // Guardar el archivo en el almacenamiento interno
-      const blob = doc.output('blob');
-      await this.file.writeFile(this.file.dataDirectory, 'formulario.pdf', blob, { replace: true });
-  
-      // Intentar abrir el archivo PDF
-      await this.fileOpener.open(filePath, 'application/pdf');
-  
-      this.showAlert('Éxito', `El PDF ha sido guardado y se ha abierto correctamente en la ruta: ${filePath}.`);
-  
-    } catch (error) {
-      // Manejar errores y mostrar alerta con la ruta del archivo
-      this.showAlert('Error', `No se pudo abrir el PDF automáticamente. El archivo se guardó en: ${filePath}. Por favor, intenta abrirlo manualmente.`);
-      console.error('Error al guardar o abrir el PDF:', error);
+  }
+
+  previousQuestion() {
+    if (this.sectionIndex > 0) {
+      this.sectionIndex--;
     }
   }
-  
 
-  // Método para modificar el PDF (puedes implementar lo que necesites aquí)
-  modify() {
-    this.showAlert('Modificar', 'Método de modificación aún no implementado.');
-  }
-
-  // Método para mostrar alertas
-  async showAlert(header: string, message: string) {
-    const alert = await this.alertCtrl.create({
-      header: header,
-      message: message,
-      buttons: ['OK']
-    });
-    await alert.present();
+  goToTab1() {
+    this.router.navigate(['/tabs/tab1']); // Cambia esta ruta según cómo esté configurada tu navegación
   }
 }

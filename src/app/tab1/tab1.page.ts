@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
-
-interface Instrument {
-  name: string;
-  description: string;
-}
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -12,62 +7,21 @@ interface Instrument {
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  instruments: Instrument[] = [
-   
-    { name: 'Datos generales', description: 'Nombre,Fecha' },
-    { name: 'Entrar al test', description: 'Preguntas' }
+  patientName: string = '';
+  testDate: string = '';
 
-  ];
+  constructor(private navCtrl: NavController) {}
 
-  constructor(private alertCtrl: AlertController, private navCtrl: NavController) {}
-
-  async openAddInstrumentModal() {
-    const alert = await this.alertCtrl.create({
-      header: 'Añadir Instrumento',
-      inputs: [
-        { name: 'name', type: 'text', placeholder: 'Nombre del instrumento' },
-        { name: 'description', type: 'text', placeholder: 'Descripción' }
-      ],
-      buttons: [
-        { text: 'Cancelar', role: 'cancel' },
-        { text: 'Guardar', handler: data => this.addInstrument(data) }
-      ]
-    });
-
-    await alert.present();
-  }
-
-  addInstrument(data: { name: string, description: string }) {
-    if (data.name && data.description) {
-      this.instruments.push(data);
+  goToTest() {
+    if (this.patientName.trim() && this.testDate.trim()) {
+      this.navCtrl.navigateForward('/instrumentos-parte1', {
+        queryParams: {
+          name: this.patientName,
+          date: this.testDate
+        }
+      });
+    } else {
+      console.error('El nombre del paciente y la fecha son obligatorios');
     }
   }
-
-  openInstrument(instrument: Instrument) {
-    this.navCtrl.navigateForward('/instrumentos-parte1', {  /* #esto lleva a la nueva vista */
-      queryParams: {
-        name: instrument.name,
-        description: instrument.description
-      }
-    });
-  }
-
-  async deleteInstrument(instrument: Instrument) {
-    const alert = await this.alertCtrl.create({
-      header: 'Eliminar Instrumento',
-      message: `¿Estás seguro de que deseas eliminar el instrumento "${instrument.name}"?`,
-      buttons: [
-        { text: 'Cancelar', role: 'cancel' },
-        {
-          text: 'Eliminar',
-          handler: () => {
-            this.instruments = this.instruments.filter(i => i !== instrument);
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
 }
-

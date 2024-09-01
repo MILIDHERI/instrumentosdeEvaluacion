@@ -1,36 +1,32 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Detalle del Instrumento</ion-title>
+    <ion-title>Test Mini-Mental</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <!-- Eliminar el segundo ion-header innecesario -->
-  
-  <ion-list>
-    <!-- Pregunta 1: Nombre del paciente -->
-    <ion-item>
-      <ion-label position="stacked">Nombre del paciente</ion-label>
-      <ion-input [(ngModel)]="name" placeholder="Ingresse el nombre del paciente"></ion-input>
-    </ion-item>
-
-    <!-- Pregunta 2: Fecha de la evaluación -->
-    <ion-item>
-      <ion-label position="stacked">Fecha de la evaluación</ion-label>
-      <ion-datetime [(ngModel)]="evaluationDate" display-format="DD/MM/YYYY" placeholder="Seleccione una fecha"></ion-datetime>
-    </ion-item>
-  </ion-list>
-
-  <!-- Botones para guardar, modificar y volver -->
-  <ion-footer>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button (click)="goBack()">Volver</ion-button>
-      </ion-buttons>
-      <ion-buttons slot="end">
-        <ion-button (click)="save()" color="primary">Guardar</ion-button>
-        <ion-button (click)="modify()" color="secondary">Modificar</ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-footer>
+<ion-content>
+  <div class="container">
+    <ion-card *ngIf="questions.length > 0" class="expanded-card">
+      <ion-card-header>
+        <ion-card-title>Sección de Orientación</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>{{ getCurrentQuestion() }}</ion-label>
+        <div class="button-container">
+          <ion-button (click)="selectAnswer(true)" expand="full">Correcto</ion-button>
+          <ion-button (click)="selectAnswer(false)" expand="full" color="danger">Incorrecto</ion-button>
+        </div>
+        <div class="button-container">
+          <ion-button (click)="goToTab1()">Volver</ion-button>
+          <ion-button (click)="previousQuestion()" [disabled]="sectionIndex === 0">◀️</ion-button>
+          <ion-button (click)="nextQuestion()">▶️</ion-button>
+        </div>
+        <div class="feedback-container">
+          <ion-item *ngIf="feedback[sectionIndex]">
+            <ion-label>{{ feedback[sectionIndex] }}</ion-label>
+          </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
