@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Importa Router para la navegación
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-instrumentos-parte1',
@@ -21,6 +21,9 @@ export class InstrumentosParte1Page {
     9: "Primer piso"
   };
 
+  memoryAnswers = ["mesa", "llave", "libro"];
+  userMemoryAnswer: string = ''; // Respuesta ingresada por el usuario en memoria inmediata
+
   questions = [
     "¿En qué año estamos?",
     "¿En qué estación del año?",
@@ -31,21 +34,39 @@ export class InstrumentosParte1Page {
     "¿En qué provincia estamos?",
     "¿En qué ciudad estamos?",
     "¿Dónde estamos en este momento?",
-    "¿En qué piso/planta estamos?"
+    "¿En qué piso/planta estamos?",
   ];
 
   feedback: { [key: number]: string } = {};
-  sectionIndex = 0; // Para rastrear el índice de la pregunta actual
+  correctAnswersFeedback: { [key: number]: string } = {};
+  sectionIndex = 0;
+  score = 0;
+  showScore = false; // Controla la visibilidad del puntaje
+  userAnswer: string = ''; // Respuesta ingresada por el usuario
 
   constructor(private router: Router) {}
 
-  selectAnswer(isCorrect: boolean) {
-    // Compara la respuesta del paciente con la respuesta correcta
-    const correct = this.correctAnswers[this.sectionIndex] === 'Correcta'; // O el valor esperado
-    this.feedback[this.sectionIndex] = isCorrect === correct ? 'Correcto' : 'Incorrecto';
-    
-    // Avanzar a la siguiente pregunta
-    this.nextQuestion();
+  checkAnswer(answer: 'correct' | 'incorrect') {
+    const correctAnswer = this.correctAnswers[this.sectionIndex];
+    if (answer === 'correct') {
+      this.feedback[this.sectionIndex] = 'Correcto';
+      this.correctAnswersFeedback[this.sectionIndex] = '';
+      this.score++;
+    } else {
+      this.feedback[this.sectionIndex] = 'Incorrecto';
+      this.correctAnswersFeedback[this.sectionIndex] = `Respuesta correcta: ${correctAnswer}`;
+    }
+    this.answers[this.sectionIndex] = this.userAnswer;
+    this.userAnswer = '';
+  }
+
+  checkMemoryAnswer() {
+    const userMemoryWords = this.userMemoryAnswer.split(',').map(word => word.trim().toLowerCase());
+    const correctMemoryCount = this.memoryAnswers.filter(word => userMemoryWords.includes(word)).length;
+
+    this.feedback[10] = `Palabras correctas: ${correctMemoryCount} de ${this.memoryAnswers.length}`;
+    this.score += correctMemoryCount;
+    this.userMemoryAnswer = '';
   }
 
   getCurrentQuestion() {
@@ -66,5 +87,13 @@ export class InstrumentosParte1Page {
 
   goToTab1() {
     this.router.navigate(['/tabs/tab1']); // Cambia esta ruta según cómo esté configurada tu navegación
+  }
+
+  displayScore() {
+    this.showScore = true; // Muestra el puntaje
+  }
+
+  continueToNextSection() {
+    this.sectionIndex = 10; // O el índice correspondiente a la sección "Memoria Inmediata"
   }
 }

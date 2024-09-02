@@ -6,26 +6,59 @@
 
 <ion-content>
   <div class="container">
-    <ion-card *ngIf="questions.length > 0" class="expanded-card">
+    <!-- Sección de Orientación -->
+    <ion-card *ngIf="sectionIndex >= 0 && sectionIndex <= 9" class="expanded-card">
       <ion-card-header>
-        <ion-card-title>Sección de Orientación</ion-card-title>
+        <ion-card-title>Item de Orientación</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-label>{{ getCurrentQuestion() }}</ion-label>
+        <ion-input [(ngModel)]="userAnswer" placeholder="Escriba la respuesta"></ion-input>
         <div class="button-container">
-          <ion-button (click)="selectAnswer(true)" expand="full">Correcto</ion-button>
-          <ion-button (click)="selectAnswer(false)" expand="full" color="danger">Incorrecto</ion-button>
+          <ion-button (click)="checkAnswer('correct')" expand="full">Correcto</ion-button>
+          <ion-button (click)="checkAnswer('incorrect')" expand="full">Incorrecto</ion-button>
         </div>
         <div class="button-container">
           <ion-button (click)="goToTab1()">Volver</ion-button>
           <ion-button (click)="previousQuestion()" [disabled]="sectionIndex === 0">◀️</ion-button>
-          <ion-button (click)="nextQuestion()">▶️</ion-button>
+          <ion-button (click)="nextQuestion()" [disabled]="sectionIndex === 9">▶️</ion-button>
         </div>
         <div class="feedback-container">
           <ion-item *ngIf="feedback[sectionIndex]">
             <ion-label>{{ feedback[sectionIndex] }}</ion-label>
           </ion-item>
+          <ion-item *ngIf="correctAnswersFeedback[sectionIndex]">
+            <ion-label>{{ correctAnswersFeedback[sectionIndex] }}</ion-label>
+          </ion-item>
         </div>
+        <ion-button *ngIf="sectionIndex === 9 && !showScore" (click)="displayScore()" expand="full">Mostrar Puntaje</ion-button>
+        <ion-item *ngIf="showScore">
+          <ion-label>Puntaje: {{ score }} de {{ questions.length }}</ion-label>
+        </ion-item>
+        <ion-button *ngIf="sectionIndex === 9 && !showScore" (click)="continueToNextSection()" expand="full">Continuar</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Sección de Memoria Inmediata -->
+    <ion-card *ngIf="sectionIndex === 10" class="expanded-card">
+      <ion-card-header>
+        <ion-card-title>Item de Memoria Inmediata</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-label>Al paciente se le dicen 3 palabras: mesa, llave, libro. El terapeuta pone la respuesta y se comprueba cuántas palabras correctas repitió, cada palabra vale 1 punto.</ion-label>
+        <ion-input [(ngModel)]="userMemoryAnswer" placeholder="Escriba la respuesta (separada por comas)"></ion-input>
+        <div class="button-container">
+          <ion-button (click)="checkMemoryAnswer()" expand="full">Comprobar Respuesta</ion-button>
+        </div>
+        <div class="feedback-container">
+          <ion-item *ngIf="feedback[10]">
+            <ion-label>{{ feedback[10] }}</ion-label>
+          </ion-item>
+        </div>
+        <ion-button *ngIf="sectionIndex === 10 && !showScore" (click)="displayScore()" expand="full">Mostrar Puntaje</ion-button>
+        <ion-item *ngIf="showScore">
+          <ion-label>Puntaje: {{ score }} de {{ memoryAnswers.length }}</ion-label>
+        </ion-item>
       </ion-card-content>
     </ion-card>
   </div>
