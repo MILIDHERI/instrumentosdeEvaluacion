@@ -43,21 +43,31 @@ export class InstrumentosParte1Page {
   score = 0;
   showScore = false; // Controla la visibilidad del puntaje
   userAnswer: string = ''; // Respuesta ingresada por el usuario
+  answeredQuestions: Set<number> = new Set(); // Para rastrear preguntas ya respondidas
 
   constructor(private router: Router) {}
 
   checkAnswer(answer: 'correct' | 'incorrect') {
+    if (this.answeredQuestions.has(this.sectionIndex)) {
+      // Si la pregunta ya ha sido respondida, no hacer nada
+      return;
+    }
+
     const correctAnswer = this.correctAnswers[this.sectionIndex];
     if (answer === 'correct') {
       this.feedback[this.sectionIndex] = 'Correcto';
       this.correctAnswersFeedback[this.sectionIndex] = '';
-      this.score++;
+      // Incrementa el puntaje solo si es menor a 10
+      if (this.score < 10) {
+        this.score++;
+      }
     } else {
       this.feedback[this.sectionIndex] = 'Incorrecto';
       this.correctAnswersFeedback[this.sectionIndex] = `Respuesta correcta: ${correctAnswer}`;
     }
     this.answers[this.sectionIndex] = this.userAnswer;
     this.userAnswer = '';
+    this.answeredQuestions.add(this.sectionIndex); // Marca la pregunta como respondida
   }
 
   checkMemoryAnswer() {
@@ -66,11 +76,19 @@ export class InstrumentosParte1Page {
 
     this.feedback[10] = `Palabras correctas: ${correctMemoryCount} de ${this.memoryAnswers.length}`;
     this.score += correctMemoryCount;
+    // Limita el puntaje total a 10
+    if (this.score > 10) {
+      this.score = 10;
+    }
     this.userMemoryAnswer = '';
   }
 
   getCurrentQuestion() {
     return this.questions[this.sectionIndex];
+  }
+
+  getCurrentQuestionNumber() {
+    return this.sectionIndex + 1; // Los números de pregunta empiezan en 1
   }
 
   nextQuestion() {

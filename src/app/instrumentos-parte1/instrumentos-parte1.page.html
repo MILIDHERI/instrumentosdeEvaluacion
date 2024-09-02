@@ -12,7 +12,7 @@
         <ion-card-title>Item de Orientación</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <ion-label>{{ getCurrentQuestion() }}</ion-label>
+        <ion-label>Pregunta {{ getCurrentQuestionNumber() }}: {{ getCurrentQuestion() }}</ion-label>
         <ion-input [(ngModel)]="userAnswer" placeholder="Escriba la respuesta"></ion-input>
         <div class="button-container">
           <ion-button (click)="checkAnswer('correct')" expand="full">Correcto</ion-button>
@@ -31,11 +31,11 @@
             <ion-label>{{ correctAnswersFeedback[sectionIndex] }}</ion-label>
           </ion-item>
         </div>
-        <ion-button *ngIf="sectionIndex === 9 && !showScore" (click)="displayScore()" expand="full">Mostrar Puntaje</ion-button>
-        <ion-item *ngIf="showScore">
+        <ion-button *ngIf="sectionIndex === 9" (click)="displayScore()" expand="full">Mostrar Puntaje</ion-button>
+        <ion-item *ngIf="sectionIndex === 9 && showScore">
           <ion-label>Puntaje: {{ score }} de {{ questions.length }}</ion-label>
         </ion-item>
-        <ion-button *ngIf="sectionIndex === 9 && !showScore" (click)="continueToNextSection()" expand="full">Continuar</ion-button>
+        <ion-button *ngIf="sectionIndex === 9" (click)="continueToNextSection()" expand="full">Continuar</ion-button>
       </ion-card-content>
     </ion-card>
 
@@ -56,7 +56,7 @@
           </ion-item>
         </div>
         <ion-button *ngIf="sectionIndex === 10 && !showScore" (click)="displayScore()" expand="full">Mostrar Puntaje</ion-button>
-        <ion-item *ngIf="showScore">
+        <ion-item *ngIf="sectionIndex === 10 && showScore">
           <ion-label>Puntaje: {{ score }} de {{ memoryAnswers.length }}</ion-label>
         </ion-item>
       </ion-card-content>
