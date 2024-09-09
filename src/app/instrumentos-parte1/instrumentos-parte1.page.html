@@ -2,6 +2,9 @@
   <ion-toolbar>
     <ion-title>Test Mini-Mental</ion-title>
     <ion-badge slot="end" color="primary">Puntos: {{ score }}</ion-badge> <!-- Puntos siempre visibles -->
+    <ion-buttons slot="end">
+      <ion-button (click)="goToTab1()" color="danger">Salir del Test</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -43,6 +46,8 @@
         <ion-item *ngIf="feedback[10]">
           <ion-label>{{ feedback[10] }}</ion-label>
         </ion-item>
+        <!-- Botón Continuar al final del ítem -->
+        <ion-button (click)="continueToNextSection()" expand="full">Continuar al siguiente ítem</ion-button>
       </ion-card-content>
     </ion-card>
 
@@ -58,6 +63,8 @@
           <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘ RESPUESTA MALA</ion-button>
           <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔ RESPUESTA BUENA</ion-button>
         </div>
+        <!-- Botón Continuar al final del ítem -->
+        <ion-button *ngIf="sectionIndex === 11" (click)="continueToNextSection()" expand="full">Continuar al siguiente ítem</ion-button>
       </ion-card-content>
     </ion-card>
 
@@ -72,6 +79,8 @@
         <div class="button-container">
           <ion-button (click)="checkMemoryAnswer()" expand="full">Comprobar Respuesta</ion-button>
         </div>
+        <!-- Botón Continuar al final del ítem -->
+        <ion-button *ngIf="sectionIndex === 12" (click)="continueToNextSection()" expand="full">Continuar al siguiente ítem</ion-button>
       </ion-card-content>
     </ion-card>
 
@@ -87,6 +96,8 @@
           <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘ RESPUESTA MALA</ion-button>
           <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔ RESPUESTA BUENA</ion-button>
         </div>
+        <!-- Botón Continuar al final del ítem -->
+        <ion-button *ngIf="sectionIndex === 13" (click)="continueToNextSection()" expand="full">Continuar al siguiente ítem</ion-button>
       </ion-card-content>
     </ion-card>
 
@@ -104,3 +115,9 @@
     </ion-card>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Puntos actuales: {{ score }}</ion-title>
+  </ion-toolbar>
+</ion-footer>

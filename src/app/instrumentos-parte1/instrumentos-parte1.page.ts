@@ -107,11 +107,6 @@ export class InstrumentosParte1Page {
     this.nextQuestion();
   }
   
-  
-  
-
-
-
   async showBottomSheet(message: string, color: string) {
     const toast = await this.toastController.create({
       message: message,
@@ -122,8 +117,6 @@ export class InstrumentosParte1Page {
     toast.present();
   }
   
-  
-
   getCurrentQuestion() {
     return this.questions[this.sectionIndex];
   }
@@ -133,14 +126,16 @@ export class InstrumentosParte1Page {
   }
 
   nextQuestion() {
-    if (this.sectionIndex < this.questions.length - 1) {
+    if (this.sectionIndex < 14) { // El test tiene 14 secciones
       this.sectionIndex++;
-    } else if (this.sectionIndex === 9) {
-      this.showScore = true; // Muestra el puntaje al final
-      this.continueToNextSection(); // Avanza a la siguiente sección
+    }
+    // Si llegamos a la última pregunta de una sección, permitimos avanzar a la siguiente sección
+    if (this.sectionIndex === 9) {
+      this.continueToNextSection(); // Avanza de la sección de Orientación a la siguiente
+    } else if (this.sectionIndex === 10) {
+      this.continueToNextSection(); // Avanza de Memoria Inmediata a Atención y Cálculo
     }
   }
-  
 
   previousQuestion() {
     if (this.sectionIndex > 0) {
@@ -151,16 +146,26 @@ export class InstrumentosParte1Page {
   goToTab1() {
     this.router.navigate(['/tabs/tab1']);
   }
+  
 
   displayScore() {
     this.showScore = true;
   }
 
   continueToNextSection() {
-    this.sectionIndex = 10; // Mueve a la sección de "Memoria Inmediata"
+    if (this.sectionIndex === 9) { // Cambia de la sección Orientación a Memoria Inmediata
+      this.sectionIndex = 10;
+    } else if (this.sectionIndex === 10) { // Cambia de Memoria Inmediata a Atención y Cálculo
+      this.sectionIndex = 11;
+    } else if (this.sectionIndex === 11) { // Cambia de Atención y Cálculo a Recuerdo Diferido
+      this.sectionIndex = 12;
+    } else if (this.sectionIndex === 12) { // Cambia de Recuerdo Diferido a Lenguaje y Construcción
+      this.sectionIndex = 13;
+    } else if (this.sectionIndex === 13) { // Finaliza el test
+      this.sectionIndex = 14;
+    }
   }
   
-
 
   finishTest() {
     const doc = new jsPDF();
@@ -182,6 +187,4 @@ export class InstrumentosParte1Page {
     // Guardar el PDF en la memoria del celular
     doc.save('Resumen_Test_Mini_Mental.pdf');
   }
-  
-
 }
