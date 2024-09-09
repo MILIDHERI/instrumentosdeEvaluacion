@@ -1,12 +1,36 @@
-.correct-answer {
-    font-style: italic;
-    color: gray;
-    margin-bottom: 10px;
-  }
-  
-  .button-container {
+.expanded-card {
+  background-color: cyan; /* Color de fondo cyan */
+  color: black; /* Color del texto negro para buen contraste */
+
+  ion-card-header {
     display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente, si es necesario */
   }
-  
+
+  ion-card-title {
+    font-weight: bold; /* Aplica negrita al texto */
+    color: #000000; /* Asegura que el texto sea negro puro */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+  }
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between; // Distribuye los botones a los extremos
+  margin-top: 50px;
+}
+
+
+/* Aplicar estilo al ion-input dentro de ion-card-content */
+ion-card-content ion-input {
+  --border-color: #007bff; /* Color del borde */
+  --border-style: solid; /* Estilo del borde */
+  --border-width: 2px; /* Ancho del borde */
+  --border-radius: 8px; /* Radio del borde redondeado */
+  --background: #bea1f5; /* Color de fondo opcional */
+  --padding-start: 10px; /* Espaciado interno a la izquierda */
+  --padding-end: 10px; /* Espaciado interno a la derecha */
+  --margin: 10px 0; /* Margen superior e inferior */
+}

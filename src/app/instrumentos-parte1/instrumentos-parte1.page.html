@@ -12,16 +12,18 @@
   <div class="container">
     <!-- Sección de Orientación -->
     <ion-card *ngIf="sectionIndex >= 0 && sectionIndex <= 9" class="expanded-card">
+
       <ion-card-header>
         <ion-card-title>Item de Orientación</ion-card-title>
       </ion-card-header>
+      
       <ion-card-content>
         <ion-label>Pregunta {{ sectionIndex + 1 }}: {{ questions[sectionIndex] }}</ion-label>
         <ion-label>(Respuesta correcta: {{ correctAnswers[sectionIndex] }})</ion-label>
         <ion-input [(ngModel)]="userAnswer" placeholder="Escriba la respuesta"></ion-input>
         <div class="button-container">
-          <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘ RESPUESTA MALA</ion-button>
-          <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔ RESPUESTA BUENA</ion-button>
+          <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘ </ion-button>
+          <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔ </ion-button>
         </div>
         <div class="button-container">
           <ion-button (click)="previousQuestion()" [disabled]="sectionIndex === 0">◀️</ion-button>
@@ -32,8 +34,11 @@
       </ion-card-content>
     </ion-card>
 
+
+
+
     <!-- Sección de Memoria Inmediata -->
-    <ion-card *ngIf="sectionIndex === 10" class="expanded-card">
+    <ion-card *ngIf="sectionIndex === 10" class="e">
       <ion-card-header>
         <ion-card-title>Item de Memoria Inmediata</ion-card-title>
       </ion-card-header>
