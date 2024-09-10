@@ -1,6 +1,10 @@
+
+
+
+
 .expanded-card {
-  --background: linear-gradient(to right, #5fecff1f, #d3ffff);
-  color: black; /* Color del texto negro para buen contraste */
+    --background: linear-gradient(to right, #5fecff1f, #d3ffff);
+    color: black; /* Color del texto negro para buen contraste */
 
   ion-card-header {
     display: flex;
@@ -15,6 +19,8 @@
     font-family: 'Times New Roman', Courier, monospace !important; /* Cambia la fuente con mayor prioridad */
   }
 }
+
+
 ion-content {
   --background: linear-gradient(to right, #1778f78f, #7be4fe);
 }
@@ -42,6 +48,7 @@ ion-card-content ion-input {
   --margin: 10px 0; /* Margen superior e inferior */
   
 }
+
 .expanded-card ion-card-content ion-label {
   font-family: 'Times New Roman', Courier, monospace !important; /* Cambia la fuente con mayor prioridad */
   font-size: 14px;
@@ -49,4 +56,25 @@ ion-card-content ion-input {
   color: #333;
   text-align: left;
   margin-bottom: 8px;
+}
+
+
+
+.button-containerNQ {
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  align-items: center; /* Centra los botones verticalmente dentro del contenedor */
+  position: fixed; /* Fija el contenedor al final de la página */
+  bottom: 60px; /* Ajusta la posición a 30px desde la parte inferior */
+  left: 0;
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  padding: 10px; /* Añade algo de espacio alrededor de los botones */
+  background-color: #ffffff; /* Color de fondo para que los botones se destaquen */
+  z-index: 100; /* Asegura que el contenedor esté siempre encima */
+  
+  ion-button {
+    margin: 0 10px; /* Añade espacio entre los botones */
+    flex-grow: 1; /* Hace que los botones ocupen todo el espacio disponible y se ajusten */
+    max-width: 150px; /* Define un ancho máximo para que no crezcan demasiado */
+  }
 }

@@ -25,13 +25,11 @@
           <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘ </ion-button>
           <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔ </ion-button>
         </div>
-        <div class="button-container">
-          <ion-button (click)="previousQuestion()" [disabled]="sectionIndex === 0">◀️</ion-button>
-          <ion-button (click)="nextQuestion()" [disabled]="sectionIndex === 9">▶️</ion-button>
-        </div>
+     
         <!-- Botón Continuar al final del ítem -->
         <ion-button *ngIf="sectionIndex === 9" (click)="continueToNextSection()" expand="full">Continuar al siguiente ítem</ion-button>
       </ion-card-content>
+      
     </ion-card>
 
 
@@ -117,7 +115,19 @@
           <ion-button (click)="finishTest()" expand="full">Generar Resumen en PDF</ion-button>
         </div>
       </ion-card-content>
+
+
+
+
+
     </ion-card>
+
+    <div class="button-containerNQ">
+      <ion-button (click)="previousQuestion()" [disabled]="sectionIndex === 0">◀️</ion-button>
+      <ion-button (click)="nextQuestion()" [disabled]="sectionIndex === 9">▶️</ion-button>
+    </div>
+
+
   </div>
 </ion-content>
 
