@@ -1,5 +1,5 @@
 .expanded-card {
-  background-color: cyan; /* Color de fondo cyan */
+  --background: linear-gradient(to right, #5fecff1f, #d3ffff);
   color: black; /* Color del texto negro para buen contraste */
 
   ion-card-header {
@@ -12,25 +12,41 @@
     font-weight: bold; /* Aplica negrita al texto */
     color: #000000; /* Asegura que el texto sea negro puro */
     text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    font-family: 'Times New Roman', Courier, monospace !important; /* Cambia la fuente con mayor prioridad */
   }
+}
+ion-content {
+  --background: linear-gradient(to right, #1778f78f, #7be4fe);
 }
 
 
 .button-container {
   display: flex;
-  justify-content: space-between; // Distribuye los botones a los extremos
-  margin-top: 50px;
+  flex-direction: Horizont; /* Alinea los botones de forma vertical */
+  justify-content: space-between; /* Distribuye los botones verticalmente */
+  margin: 25px; /* Ajusta el margen como prefieras */
+  margin-bottom: 25px; /* Espacio adicional en la parte inferior */
 }
+
 
 
 /* Aplicar estilo al ion-input dentro de ion-card-content */
 ion-card-content ion-input {
   --border-color: #007bff; /* Color del borde */
   --border-style: solid; /* Estilo del borde */
-  --border-width: 2px; /* Ancho del borde */
+  --border-width: 20px; /* Ancho del borde */
   --border-radius: 8px; /* Radio del borde redondeado */
-  --background: #bea1f5; /* Color de fondo opcional */
-  --padding-start: 10px; /* Espaciado interno a la izquierda */
+  --background: #d5d2ec; /* Color de fondo opcional */
+  --padding-start: 50px; /* Espaciado interno a la izquierda */
   --padding-end: 10px; /* Espaciado interno a la derecha */
   --margin: 10px 0; /* Margen superior e inferior */
+  
+}
+.expanded-card ion-card-content ion-label {
+  font-family: 'Times New Roman', Courier, monospace !important; /* Cambia la fuente con mayor prioridad */
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  margin-bottom: 8px;
 }
