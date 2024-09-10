@@ -15,6 +15,7 @@
   ion-card-title {
     font-weight: bold; /* Aplica negrita al texto */
     color: #000000; /* Asegura que el texto sea negro puro */
+    font-size: 30px;
     text-transform: uppercase; /* Convierte el texto a mayúsculas */
     font-family: 'Times New Roman', Courier, monospace !important; /* Cambia la fuente con mayor prioridad */
   }
@@ -36,22 +37,26 @@ ion-content {
 
 
 
-/* Aplicar estilo al ion-input dentro de ion-card-content */
 ion-card-content ion-input {
   --border-color: #007bff; /* Color del borde */
   --border-style: solid; /* Estilo del borde */
-  --border-width: 20px; /* Ancho del borde */
-  --border-radius: 8px; /* Radio del borde redondeado */
-  --background: #d5d2ec; /* Color de fondo opcional */
-  --padding-start: 50px; /* Espaciado interno a la izquierda */
-  --padding-end: 10px; /* Espaciado interno a la derecha */
+  --border-width: 2px; /* Ancho del borde (ajustado a 2px para evitar que sea demasiado grueso) */
+  --border-radius: 20px; /* Radio del borde redondeado */
+  --background: #d5d2ec; /* Color de fondo */
+  --padding-start: 20px; /* Espaciado interno a la izquierda */
+  --padding-end: 20px; /* Espaciado interno a la derecha */
   --margin: 10px 0; /* Margen superior e inferior */
-  
+  width: 100%; /* Ocupa todo el ancho disponible */
+  height: 400px; /* Ajusta la altura del input */
+  font-size: 18px; /* Tamaño de la fuente */
 }
+
+  
+
 
 .expanded-card ion-card-content ion-label {
   font-family: 'Times New Roman', Courier, monospace !important; /* Cambia la fuente con mayor prioridad */
-  font-size: 14px;
+  font-size: 30px;
   font-weight: bold;
   color: #333;
   text-align: left;

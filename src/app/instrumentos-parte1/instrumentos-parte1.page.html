@@ -18,7 +18,10 @@
       </ion-card-header>
       
       <ion-card-content>
-        <ion-label>Pregunta {{ sectionIndex + 1 }}: {{ questions[sectionIndex] }}</ion-label>
+        <ion-label>Pregunta {{ sectionIndex + 1 }}:
+          
+          
+          {{ questions[sectionIndex] }}</ion-label>
         <ion-label>(Respuesta correcta: {{ correctAnswers[sectionIndex] }})</ion-label>
         <ion-input [(ngModel)]="userAnswer" placeholder="Escriba la respuesta"></ion-input>
         <div class="button-container">
