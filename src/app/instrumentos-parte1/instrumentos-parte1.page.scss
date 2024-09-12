@@ -3,21 +3,28 @@
 
 
 .expanded-card {
-    --background: linear-gradient(to right, #5fecff1f, #d3ffff);
-    color: black; /* Color del texto negro para buen contraste */
+  --background: linear-gradient(to right, #5fecff1f, #d3ffff);
+  color: black;
+  /* Color del texto negro para buen contraste */
 
   ion-card-header {
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente, si es necesario */
+    justify-content: center;
+    /* Centra el contenido horizontalmente */
+    align-items: center;
+    /* Centra el contenido verticalmente, si es necesario */
   }
 
   ion-card-title {
-    font-weight: bold; /* Aplica negrita al texto */
-    color: #000000; /* Asegura que el texto sea negro puro */
+    font-weight: bold;
+    /* Aplica negrita al texto */
+    color: #000000;
+    /* Asegura que el texto sea negro puro */
     font-size: 30px;
-    text-transform: uppercase; /* Convierte el texto a mayúsculas */
-    font-family: 'Times New Roman', Courier, monospace !important; /* Cambia la fuente con mayor prioridad */
+    text-transform: uppercase;
+    /* Convierte el texto a mayúsculas */
+    font-family: 'Times New Roman', Courier, monospace !important;
+    /* Cambia la fuente con mayor prioridad */
   }
 }
 
@@ -29,33 +36,49 @@ ion-content {
 
 .button-container {
   display: flex;
-  flex-direction: Horizont; /* Alinea los botones de forma vertical */
-  justify-content: space-between; /* Distribuye los botones verticalmente */
-  margin: 25px; /* Ajusta el margen como prefieras */
-  margin-bottom: 25px; /* Espacio adicional en la parte inferior */
+  flex-direction: Horizont;
+  /* Alinea los botones de forma vertical */
+  justify-content: space-between;
+  /* Distribuye los botones verticalmente */
+  margin: 25px;
+  /* Ajusta el margen como prefieras */
+  margin-bottom: 25px;
+  /* Espacio adicional en la parte inferior */
 }
 
 
 
 ion-card-content ion-input {
-  --border-color: #007bff; /* Color del borde */
-  --border-style: solid; /* Estilo del borde */
-  --border-width: 2px; /* Ancho del borde (ajustado a 2px para evitar que sea demasiado grueso) */
-  --border-radius: 20px; /* Radio del borde redondeado */
-  --background: #d5d2ec; /* Color de fondo */
-  --padding-start: 20px; /* Espaciado interno a la izquierda */
-  --padding-end: 20px; /* Espaciado interno a la derecha */
-  --margin: 10px 0; /* Margen superior e inferior */
-  width: 100%; /* Ocupa todo el ancho disponible */
-  height: 400px; /* Ajusta la altura del input */
-  font-size: 18px; /* Tamaño de la fuente */
+  --border-color: #007bff;
+  /* Color del borde */
+  --border-style: solid;
+  /* Estilo del borde */
+  --border-width: 2px;
+  /* Ancho del borde (ajustado a 2px para evitar que sea demasiado grueso) */
+  --border-radius: 20px;
+  /* Radio del borde redondeado */
+  --background: #d5d2ec;
+  /* Color de fondo */
+  --padding-start: 20px;
+  /* Espaciado interno a la izquierda */
+  --padding-end: 20px;
+  /* Espaciado interno a la derecha */
+  --margin: 10px 0;
+  /* Margen superior e inferior */
+  width: 100%;
+  /* Ocupa todo el ancho disponible */
+  height: 400px;
+  /* Ajusta la altura del input */
+  font-size: 18px;
+  /* Tamaño de la fuente */
 }
 
-  
+
 
 
 .expanded-card ion-card-content ion-label {
-  font-family: 'Times New Roman', Courier, monospace !important; /* Cambia la fuente con mayor prioridad */
+  font-family: 'Times New Roman', Courier, monospace !important;
+  /* Cambia la fuente con mayor prioridad */
   font-size: 30px;
   font-weight: bold;
   color: #333;
@@ -67,19 +90,30 @@ ion-card-content ion-input {
 
 .button-containerNQ {
   display: flex;
-  justify-content: center; /* Centra los botones horizontalmente */
-  align-items: center; /* Centra los botones verticalmente dentro del contenedor */
-  position: fixed; /* Fija el contenedor al final de la página */
-  bottom: 60px; /* Ajusta la posición a 30px desde la parte inferior */
+  justify-content: center;
+  /* Centra los botones horizontalmente */
+  align-items: center;
+  /* Centra los botones verticalmente dentro del contenedor */
+  position: fixed;
+  /* Fija el contenedor al final de la página */
+  bottom: 60px;
+  /* Ajusta la posición a 30px desde la parte inferior */
   left: 0;
-  width: 100%; /* Asegura que ocupe todo el ancho */
-  padding: 10px; /* Añade algo de espacio alrededor de los botones */
-  background-color: #ffffff; /* Color de fondo para que los botones se destaquen */
-  z-index: 100; /* Asegura que el contenedor esté siempre encima */
-  
+  width: 100%;
+  /* Asegura que ocupe todo el ancho */
+  padding: 10px;
+  /* Añade algo de espacio alrededor de los botones */
+  background-color: #ffffff;
+  /* Color de fondo para que los botones se destaquen */
+  z-index: 100;
+  /* Asegura que el contenedor esté siempre encima */
+
   ion-button {
-    margin: 0 10px; /* Añade espacio entre los botones */
-    flex-grow: 1; /* Hace que los botones ocupen todo el espacio disponible y se ajusten */
-    max-width: 150px; /* Define un ancho máximo para que no crezcan demasiado */
+    margin: 0 10px;
+    /* Añade espacio entre los botones */
+    flex-grow: 1;
+    /* Hace que los botones ocupen todo el espacio disponible y se ajusten */
+    max-width: 150px;
+    /* Define un ancho máximo para que no crezcan demasiado */
   }
 }

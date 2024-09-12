@@ -44,7 +44,7 @@ export class InstrumentosParte1Page {
   userAnswer: string = '';
   answeredQuestions: Set<number> = new Set();
 
-  constructor(private router: Router, private toastController: ToastController) {}
+  constructor(private router: Router, private toastController: ToastController) { }
 
   async presentToast(message: string, color: string) {
     const toast = await this.toastController.create({
@@ -60,10 +60,10 @@ export class InstrumentosParte1Page {
     if (this.answeredQuestions.has(this.sectionIndex)) {
       return;
     }
-  
+
     const correctAnswer = this.correctAnswers[this.sectionIndex];
     let message = '';
-  
+
     if (answer === 'correct') {
       this.feedback[this.sectionIndex] = 'Correcto';
       this.score++;
@@ -74,39 +74,39 @@ export class InstrumentosParte1Page {
       message = `Respuesta incorrecta. Correcto: ${correctAnswer}`;
       this.showBottomSheet(message, 'danger'); // Barra deslizante para respuesta incorrecta
     }
-  
+
     this.answers[this.sectionIndex] = this.userAnswer;
     this.userAnswer = '';
     this.answeredQuestions.add(this.sectionIndex);
-  
+
     // Avanza automáticamente a la siguiente pregunta
     setTimeout(() => {
       this.nextQuestion();
     }, 1500); // Espera a que la barra desaparezca antes de avanzar
   }
-  
+
 
   checkMemoryAnswer() {
     const userMemoryWords = this.userMemoryAnswer.split(',').map(word => word.trim().toLowerCase());
     const correctMemoryCount = this.memoryAnswers.filter(word => userMemoryWords.includes(word)).length;
-  
+
     this.feedback[10] = `Palabras correctas: ${correctMemoryCount} de ${this.memoryAnswers.length}`;
     this.score += correctMemoryCount;
-    
+
     // Limita el puntaje total a 10
     if (this.score > 10) {
       this.score = 10;
     }
-  
+
     this.userMemoryAnswer = '';
-  
+
     // Mostrar barra deslizante con la notificación de la respuesta
     this.showBottomSheet(`Palabras correctas: ${correctMemoryCount}`, 'correct');
-  
+
     // Avanzar automáticamente a la siguiente sección
     this.nextQuestion();
   }
-  
+
   async showBottomSheet(message: string, color: string) {
     const toast = await this.toastController.create({
       message: message,
@@ -116,7 +116,7 @@ export class InstrumentosParte1Page {
     });
     toast.present();
   }
-  
+
   getCurrentQuestion() {
     return this.questions[this.sectionIndex];
   }
@@ -146,7 +146,7 @@ export class InstrumentosParte1Page {
   goToTab1() {
     this.router.navigate(['/tabs/tab1']);
   }
-  
+
 
   displayScore() {
     this.showScore = true;
@@ -165,12 +165,12 @@ export class InstrumentosParte1Page {
       this.sectionIndex = 14;
     }
   }
-  
+
 
   finishTest() {
     const doc = new jsPDF();
     doc.text('Resumen del Test Mini-Mental', 10, 10);
-  
+
     this.questions.forEach((question, index) => {
       const answer = this.answers[index] || 'No respondida';
       const correctAnswer = this.correctAnswers[index];
@@ -179,11 +179,11 @@ export class InstrumentosParte1Page {
       doc.text(`Respuesta correcta: ${correctAnswer}`, 10, 40 + index * 20);
       doc.text('-----------------------------------', 10, 50 + index * 20);
     });
-  
+
     const memoryAnswer = this.userMemoryAnswer.split(',').map(word => word.trim()).join(', ');
     doc.text(`Respuestas Memoria Inmediata: ${memoryAnswer}`, 10, 60 + this.questions.length * 20);
     doc.text(`Puntaje Final: ${this.score}`, 10, 70 + this.questions.length * 20);
-  
+
     // Guardar el PDF en la memoria del celular
     doc.save('Resumen_Test_Mini_Mental.pdf');
   }
