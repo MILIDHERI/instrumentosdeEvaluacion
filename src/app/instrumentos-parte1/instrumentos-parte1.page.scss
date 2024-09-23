@@ -1,9 +1,15 @@
 
+.expanded-card {
+  height: vh; /* Ocupa el 80% de la altura de la pantalla */
+  display: flex;
+  flex-direction: column;
+  
+}
 
 
 
 .expanded-card {
-  --background: linear-gradient(to right, #5fecff1f, #d3ffff);
+  --background: linear-gradient(to right, #ff5fa241, #ffcaf0);
   color: black;
   /* Color del texto negro para buen contraste */
 
@@ -18,7 +24,7 @@
   ion-card-title {
     font-weight: bold;
     /* Aplica negrita al texto */
-    color: #000000;
+    color: #0000007c;
     /* Asegura que el texto sea negro puro */
     font-size: 30px;
     text-transform: uppercase;
@@ -30,7 +36,7 @@
 
 
 ion-content {
-  --background: linear-gradient(to right, #1778f78f, #7be4fe);
+  --background: linear-gradient(to right, #e0a4ce91, #f8c5dd);
 }
 
 
@@ -42,34 +48,34 @@ ion-content {
   /* Distribuye los botones verticalmente */
   margin: 25px;
   /* Ajusta el margen como prefieras */
-  margin-bottom: 25px;
+  margin-bottom: 350px;
   /* Espacio adicional en la parte inferior */
 }
 
 
 
 ion-card-content ion-input {
-  --border-color: #007bff;
+  --border-color: #ff009575;
   /* Color del borde */
   --border-style: solid;
   /* Estilo del borde */
-  --border-width: 2px;
+  --border-width: 20px;
   /* Ancho del borde (ajustado a 2px para evitar que sea demasiado grueso) */
-  --border-radius: 20px;
+  --border-radius: 100px;
   /* Radio del borde redondeado */
-  --background: #d5d2ec;
+  --background: #eec0ea;
   /* Color de fondo */
-  --padding-start: 20px;
+  --padding-start: 100px;
   /* Espaciado interno a la izquierda */
-  --padding-end: 20px;
+  --padding-end: 100px;
   /* Espaciado interno a la derecha */
   --margin: 10px 0;
   /* Margen superior e inferior */
   width: 100%;
   /* Ocupa todo el ancho disponible */
-  height: 400px;
+  height: px;
   /* Ajusta la altura del input */
-  font-size: 18px;
+  font-size: 35px;
   /* Tamaño de la fuente */
 }
 
@@ -79,7 +85,7 @@ ion-card-content ion-input {
 .expanded-card ion-card-content ion-label {
   font-family: 'Times New Roman', Courier, monospace !important;
   /* Cambia la fuente con mayor prioridad */
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   color: #333;
   text-align: left;
