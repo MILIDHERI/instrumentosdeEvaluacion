@@ -1,137 +1,88 @@
-
+/* Estilo general para tarjetas expandibles */
 .expanded-card {
-  height: vh; /* Ocupa el 80% de la altura de la pantalla */
+  height: 80vh; /* Ocupa el 80% de la altura de la pantalla */
   display: flex;
   flex-direction: column;
-  
-}
-.page-background {
-  /* Fondo degradado */
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-  position: relative;
-  height: 100vh;
-  width: 100%;
-}
-.translucent-image {
-  background-image: url('C:\Users\jenni\instrumentosdeEvaluacion\src\assets\image1');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.3;
-}
-
-
-.expanded-card {
-  --background: linear-gradient(to right, #ff5fa241, #ffcaf0);
-  color: black;
-  /* Color del texto negro para buen contraste */
+  --background: linear-gradient(to right, #d0c4c441, #d4d4d4); /* Fondo degradado */
+  color: black; /* Color de texto negro */
 
   ion-card-header {
     display: flex;
-    justify-content: center;
-    /* Centra el contenido horizontalmente */
-    align-items: center;
-    /* Centra el contenido verticalmente, si es necesario */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
   }
 
   ion-card-title {
-    font-weight: bold;
-    /* Aplica negrita al texto */
-    color: #0000007c;
-    /* Asegura que el texto sea negro puro */
+    font-weight: bold; /* Aplica negrita al texto */
+    color: #0000007c; /* Color del texto */
     font-size: 30px;
-    text-transform: uppercase;
-    /* Convierte el texto a mayúsculas */
-    font-family: 'Times New Roman', Courier, monospace !important;
-    /* Cambia la fuente con mayor prioridad */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    font-family: 'Times New Roman', Courier, monospace !important; /* Prioriza la fuente */
+  }
+
+  ion-card-content ion-label {
+    font-family: 'Times New Roman', Courier, monospace !important; /* Fuente */
+    font-size: 25px; /* Tamaño de fuente */
+    font-weight: bold; /* Texto en negrita */
+    color: #333; /* Color del texto */
+    text-align: left; /* Alineación del texto a la izquierda */
+    margin-bottom: 8px; /* Espaciado debajo */
   }
 }
 
+/* Estilo para la imagen de fondo translúcida */
+.translucent-image {
+  background-image: url('https://raw.githubusercontent.com/MILIDHERI/instrumentosdeEvaluacion/235bcc19eaaf3f94b2f5700d10b3bec0e56492a1/src/assets/image1/fondo%20para%20la%20app.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 1.33; /* Nivel de opacidad */
+  height: 100vh; /* Asegura que cubra toda la pantalla */
+}
 
+/* Fondo degradado para el contenido general */
 ion-content {
   --background: linear-gradient(to right, #e0a4ce91, #f8c5dd);
 }
 
-
+/* Contenedor de botones para alinear horizontalmente */
 .button-container {
   display: flex;
-  flex-direction: Horizont;
-  /* Alinea los botones de forma vertical */
-  justify-content: space-between;
-  /* Distribuye los botones verticalmente */
-  margin: 25px;
-  /* Ajusta el margen como prefieras */
-  margin-bottom: 350px;
-  /* Espacio adicional en la parte inferior */
+  flex-direction: row; /* Alinea los botones horizontalmente */
+  justify-content: space-between; /* Distribuye los botones uniformemente */
+  margin: 25px; /* Margen general */
+  margin-bottom: 350px; /* Espacio adicional en la parte inferior */
 }
 
-
-
+/* Estilo para el input dentro del ion-card-content */
 ion-card-content ion-input {
-  --border-color: #ff009575;
-  /* Color del borde */
-  --border-style: solid;
-  /* Estilo del borde */
-  --border-width: 20px;
-  /* Ancho del borde (ajustado a 2px para evitar que sea demasiado grueso) */
-  --border-radius: 100px;
-  /* Radio del borde redondeado */
-  --background: #eec0ea;
-  /* Color de fondo */
-  --padding-start: 100px;
-  /* Espaciado interno a la izquierda */
-  --padding-end: 100px;
-  /* Espaciado interno a la derecha */
-  --margin: 10px 0;
-  /* Margen superior e inferior */
-  width: 100%;
-  /* Ocupa todo el ancho disponible */
-  height: px;
-  /* Ajusta la altura del input */
-  font-size: 35px;
-  /* Tamaño de la fuente */
+  --border-color: #ff009575; /* Color del borde */
+  --border-style: solid; /* Estilo del borde */
+  --border-width: 20px; /* Ancho del borde */
+  --border-radius: 100px; /* Bordes redondeados */
+  --background: #eec0ea; /* Color de fondo */
+  --padding-start: 100px; /* Espaciado a la izquierda */
+  --padding-end: 100px; /* Espaciado a la derecha */
+  --margin: 10px 0; /* Margen superior e inferior */
+  width: 100%; /* Ancho total */
+  font-size: 35px; /* Tamaño de fuente */
 }
 
-
-
-
-.expanded-card ion-card-content ion-label {
-  font-family: 'Times New Roman', Courier, monospace !important;
-  /* Cambia la fuente con mayor prioridad */
-  font-size: 25px;
-  font-weight: bold;
-  color: #333;
-  text-align: left;
-  margin-bottom: 8px;
-}
-
-
-
+/* Contenedor de botones fijo en la parte inferior */
 .button-containerNQ {
   display: flex;
-  justify-content: center;
-  /* Centra los botones horizontalmente */
-  align-items: center;
-  /* Centra los botones verticalmente dentro del contenedor */
-  position: fixed;
-  /* Fija el contenedor al final de la página */
-  bottom: 60px;
-  /* Ajusta la posición a 30px desde la parte inferior */
+  justify-content: center; /* Centra horizontalmente los botones */
+  align-items: center; /* Centra verticalmente los botones */
+  position: fixed; /* Fija la posición al final de la página */
+  bottom: 60px; /* Ajusta la posición desde la parte inferior */
   left: 0;
-  width: 100%;
-  /* Asegura que ocupe todo el ancho */
-  padding: 10px;
-  /* Añade algo de espacio alrededor de los botones */
-  background-color: #ffffff;
-  /* Color de fondo para que los botones se destaquen */
-  z-index: 100;
-  /* Asegura que el contenedor esté siempre encima */
+  width: 100%; /* Ancho completo */
+  padding: 10px; /* Espaciado interno */
+  background-color: #ffffff; /* Fondo blanco */
+  z-index: 100; /* Siempre por encima del contenido */
 
   ion-button {
-    margin: 0 10px;
-    /* Añade espacio entre los botones */
-    flex-grow: 1;
-    /* Hace que los botones ocupen todo el espacio disponible y se ajusten */
-    max-width: 150px;
-    /* Define un ancho máximo para que no crezcan demasiado */
+    margin: 0 10px; /* Espaciado entre botones */
+    flex-grow: 1; /* Botones ocupan todo el espacio disponible */
+    max-width: 150px; /* Ancho máximo de los botones */
   }
 }
