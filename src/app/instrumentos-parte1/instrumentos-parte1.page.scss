@@ -5,7 +5,19 @@
   flex-direction: column;
   
 }
-
+.page-background {
+  /* Fondo degradado */
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+.translucent-image {
+  background-image: url('C:\Users\jenni\instrumentosdeEvaluacion\src\assets\image1');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+}
 
 
 .expanded-card {

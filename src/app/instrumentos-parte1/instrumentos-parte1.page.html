@@ -8,8 +8,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="container">
+<ion-content class="page-background">
+    <ion-content class="translucent-image">
+
+    
     <!-- Sección de Orientación -->
     <ion-card *ngIf="sectionIndex >= 0 && sectionIndex <= 9" class="expanded-card">
 
@@ -137,8 +139,6 @@
 
 
   </div>
-</ion-content>
-
 <ion-footer>
   <ion-toolbar>
     <ion-title>Puntos actuales: {{ score }}</ion-title>
