@@ -21,13 +21,38 @@
   }
 
   ion-card-content ion-label {
-    font-family: 'Times New Roman', Courier, monospace !important; /* Fuente */
+    font-family: 'Lucida Sans Typewriter', Courier, monospace !important; /* Fuente */
     font-size: 25px; /* Tamaño de fuente */
     font-weight: bold; /* Texto en negrita */
-    color: #333; /* Color del texto */
-    text-align: left; /* Alineación del texto a la izquierda */
-    margin-bottom: 8px; /* Espaciado debajo */
-  }
+    color: #749599; /* Color del texto */
+    text-align: center; /* Alineación del texto al centro */
+    margin-bottom: 0px; /* Espaciado debajo */
+    display: block; /* Asegúrate de que el elemento sea un bloque para que el alineamiento funcione */
+}
+
+  ion-card-content .pregunta-label {
+    font-family: 'Lucida Sans Typewriter', sans-serif; /* Cambia la fuente si es necesario */
+    font-size: 18px; /* Ajusta el tamaño de la fuente */
+    font-weight: bold; /* Define el grosor de la fuente */
+    color: #541074a6; /* Cambia el color del texto si lo deseas */
+    margin-bottom: 0px; /* Espacio debajo de la etiqueta */
+    text-align: center; /* Centrar el contenido del texto */
+}
+
+ion-card-content .RespuestaCorrecta-label {
+  font-family: 'Lucida Sans Typewriter', sans-serif; /* Cambia la fuente si es necesario */
+  font-size: 18px; /* Ajusta el tamaño de la fuente */
+  font-weight: bold; /* Define el grosor de la fuente */
+  color: #030f52a6; /* Cambia el color del texto si lo deseas */
+  margin-bottom: 10px; /* Espacio debajo de la etiqueta */
+  text-align: center; /* Centrar el contenido del texto */
+  display: block; /* Asegúrate de que el elemento sea un bloque para que el alineamiento funcione */
+}
+
+.label-container {
+  display: flex;          /* Habilita Flexbox */
+  flex-direction: column; /* Coloca los elementos en columna */
+  margin-bottom: 15px;   /* Espacio adicional si es necesario */
 }
 
 /* Estilo para la imagen de fondo translúcida */
@@ -35,43 +60,67 @@
   background-image: url('https://raw.githubusercontent.com/MILIDHERI/instrumentosdeEvaluacion/235bcc19eaaf3f94b2f5700d10b3bec0e56492a1/src/assets/image1/fondo%20para%20la%20app.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 1.33; /* Nivel de opacidad */
+  opacity: 100; /* Nivel de opacidad */
   height: 100vh; /* Asegura que cubra toda la pantalla */
 }
 
-/* Fondo degradado para el contenido general */
-ion-content {
-  --background: linear-gradient(to right, #e0a4ce91, #f8c5dd);
+
+
+/* Asegúrate de que el body y el contenedor padre ocupen toda la pantalla */
+html, body, ion-content {
+  height: 100%; /* Asegura que todo el contenido tenga el 100% de la altura */
+  margin: 0;
+  padding: 0;
 }
 
-/* Contenedor de botones para alinear horizontalmente */
 .button-container {
-  display: flex;
+  display: flex; /* Habilita Flexbox */
   flex-direction: row; /* Alinea los botones horizontalmente */
-  justify-content: space-between; /* Distribuye los botones uniformemente */
-  margin: 25px; /* Margen general */
-  margin-bottom: 350px; /* Espacio adicional en la parte inferior */
+  justify-content: center; /* Centra los botones horizontalmente */
+  align-items: flex-end; /* Alinea los botones al fondo del contenedor */
+  height: 12%; /* El contenedor ocupa el 100% de la altura */
+  padding: 75px; /* Espaciado interno opcional */
 }
+
+.button-container ion-button {
+  margin: 5px; /* Espacio entre los botones */
+  flex: 1; /* Hace que los botones ocupen el mismo ancho */
+  max-width: 100px; /* Limita el ancho máximo de cada botón */
+}
+
 
 /* Estilo para el input dentro del ion-card-content */
 ion-card-content ion-input {
   --border-color: #ff009575; /* Color del borde */
   --border-style: solid; /* Estilo del borde */
-  --border-width: 20px; /* Ancho del borde */
-  --border-radius: 100px; /* Bordes redondeados */
+  --border-width: 2px; /* Ancho del borde */
+  --border-radius: 50px; /* Bordes redondeados */
   --background: #eec0ea; /* Color de fondo */
-  --padding-start: 100px; /* Espaciado a la izquierda */
-  --padding-end: 100px; /* Espaciado a la derecha */
-  --margin: 10px 0; /* Margen superior e inferior */
+  --padding-start: 20px; /* Espaciado a la izquierda */
+  --padding-end: 20px; /* Espaciado a la derecha */
+  --margin: 20px 0; /* Margen superior e inferior */
   width: 100%; /* Ancho total */
-  font-size: 35px; /* Tamaño de fuente */
+  height: 400px; /* Altura de la caja (ajustado) */
+  font-size: 24px; /* Tamaño de fuente (ajustado) */
 }
+
+/* Asegúrate de que el ion-input tenga un aspecto adecuado */
+ion-card-content {
+  padding: 20px; /* Espaciado interno opcional para el ion-card-content */
+}
+
+
+/* Asegúrate de que el ion-input tenga un aspecto adecuado */
+ion-card-content {
+  padding: 20px; /* Espaciado interno opcional para el ion-card-content */
+}
+
+
 
 /* Contenedor de botones fijo en la parte inferior */
 .button-containerNQ {
   display: flex;
   justify-content: center; /* Centra horizontalmente los botones */
-  align-items: center; /* Centra verticalmente los botones */
   position: fixed; /* Fija la posición al final de la página */
   bottom: 60px; /* Ajusta la posición desde la parte inferior */
   left: 0;
@@ -81,8 +130,15 @@ ion-card-content ion-input {
   z-index: 100; /* Siempre por encima del contenido */
 
   ion-button {
-    margin: 0 10px; /* Espaciado entre botones */
-    flex-grow: 1; /* Botones ocupan todo el espacio disponible */
-    max-width: 150px; /* Ancho máximo de los botones */
+    margin:5px; /* Espaciado entre botones */
+    flex-grow: 10; /* Botones ocupan todo el espacio disponible */
+    max-width: 200px; /* Ancho máximo de los botones */
   }
+}
+/* Fijamos el background inicial en negro */
+body {
+  background-color: #000;
+  animation: fadeInLight 3s ease-in-out forwards;
+}
+
 }
