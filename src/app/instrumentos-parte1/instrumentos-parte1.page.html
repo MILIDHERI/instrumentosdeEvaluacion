@@ -9,137 +9,137 @@
 </ion-header>
 
 <ion-content class="translucent-image">
-   
-
-    <!-- Sección de Orientación -->
-<ion-card *ngIf="sectionIndex >= 0 && sectionIndex <= 9" class="expanded-card">
 
 
-  <ion-card-header>
-    <ion-card-title>Item de Orientación</ion-card-title>
-  </ion-card-header>
-
-  <ion-card-content>
-    <ion-label class="pregunta-label">Pregunta {{ sectionIndex + 1 }}:</ion-label><br>
-    <ion-label> {{ questions[sectionIndex] }}</ion-label><br>
-    <ion-label class="RespuestaCorrecta-label">(R: {{ correctAnswers[sectionIndex] }})</ion-label><br>
-    <ion-input [(ngModel)]="userAnswer" placeholder="Escriba la respuesta"></ion-input>
-
-    <div class="button-container">
-      <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘ </ion-button>
-      <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔ </ion-button>
-    </div>
-
-    <!-- Botón Continuar al final del ítem -->
-    <ion-button *ngIf="sectionIndex === 9" (click)="continueToNextSection()" expand="full">
-      Continuar al siguiente ítem
-    </ion-button>
-  </ion-card-content>
-
-</ion-card>
+  <!-- Sección de Orientación -->
+  <ion-card *ngIf="sectionIndex >= 0 && sectionIndex <= 9" class="expanded-card">
 
 
+    <ion-card-header>
+      <ion-card-title>Item de Orientación</ion-card-title>
+    </ion-card-header>
 
+    <ion-card-content>
+      <ion-label class="pregunta-label">Pregunta {{ sectionIndex + 1 }}:</ion-label><br>
+      <ion-label> {{ questions[sectionIndex] }}</ion-label><br>
+      <ion-label class="RespuestaCorrecta-label">(R: {{ correctAnswers[sectionIndex] }})</ion-label><br>
+      <ion-input [(ngModel)]="userAnswer" placeholder="Escriba la respuesta"></ion-input>
 
+      <div class="button-container">
+        <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘ </ion-button>
+        <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔ </ion-button>
+      </div>
 
-    <!-- Sección de Memoria Inmediata -->
-    <ion-card *ngIf="sectionIndex === 10" class="expanded-card">
-      <ion-card-header>
-        <ion-card-title>Item de Memoria Inmediata</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-label>Al paciente se le dicen 3 palabras: mesa, llave, libro. El terapeuta pone la respuesta y se comprueba
-          cuántas palabras correctas repitió, cada palabra vale 1 punto.</ion-label>
-        <ion-input [(ngModel)]="userMemoryAnswer" placeholder="Escriba la respuesta (separada por comas)"></ion-input>
-        <div class="button-container">
-          <ion-button (click)="checkMemoryAnswer()" expand="full">Comprobar Respuesta</ion-button>
-        </div>
-        <ion-item *ngIf="feedback[10]">
-          <ion-label>{{ feedback[10] }}</ion-label>
-        </ion-item>
-        <!-- Botón Continuar al final del ítem -->
-        <ion-button (click)="continueToNextSection()" expand="full">Continuar al siguiente ítem</ion-button>
-      </ion-card-content>
-    </ion-card>
+      <!-- Botón Continuar al final del ítem -->
+      <ion-button *ngIf="sectionIndex === 9" (click)="continueToNextSection()" expand="full">
+        Continuar al siguiente ítem
+      </ion-button>
+    </ion-card-content>
 
-    <!-- Sección de Atención y Cálculo -->
-    <ion-card *ngIf="sectionIndex === 11" class="expanded-card">
-      <ion-card-header>
-        <ion-card-title>Item de Atención y Cálculo</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-label>Al paciente se le pide restar 7 a 100 cinco veces. Ejemplo: 100, 93, 86...</ion-label>
-        <ion-input [(ngModel)]="userAnswer" placeholder="Escriba la respuesta"></ion-input>
-        <div class="button-container">
-          <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘ RESPUESTA MALA</ion-button>
-          <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔ RESPUESTA BUENA</ion-button>
-        </div>
-        <!-- Botón Continuar al final del ítem -->
-        <ion-button *ngIf="sectionIndex === 11" (click)="continueToNextSection()" expand="full">Continuar al siguiente
-          ítem</ion-button>
-      </ion-card-content>
-    </ion-card>
-
-    <!-- Sección de Recuerdo Diferido -->
-    <ion-card *ngIf="sectionIndex === 12" class="expanded-card">
-      <ion-card-header>
-        <ion-card-title>Item de Recuerdo Diferido</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-label>Se le pide al paciente recordar las tres palabras dichas previamente: mesa, llave, libro.</ion-label>
-        <ion-input [(ngModel)]="userMemoryAnswer" placeholder="Escriba la respuesta"></ion-input>
-        <div class="button-container">
-          <ion-button (click)="checkMemoryAnswer()" expand="full">Comprobar Respuesta</ion-button>
-        </div>
-        <!-- Botón Continuar al final del ítem -->
-        <ion-button *ngIf="sectionIndex === 12" (click)="continueToNextSection()" expand="full">Continuar al siguiente
-          ítem</ion-button>
-      </ion-card-content>
-    </ion-card>
-
-    <!-- Sección de Lenguaje y Construcción -->
-    <ion-card *ngIf="sectionIndex === 13" class="expanded-card">
-      <ion-card-header>
-        <ion-card-title>Item de Lenguaje y Construcción</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-label>Se le pide al paciente repetir una frase y dibujar una figura específica.</ion-label>
-        <ion-input [(ngModel)]="userAnswer" placeholder="Escriba la respuesta"></ion-input>
-        <div class="button-container">
-          <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘ RESPUESTA MALA</ion-button>
-          <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔ RESPUESTA BUENA</ion-button>
-        </div>
-        <!-- Botón Continuar al final del ítem -->
-        <ion-button *ngIf="sectionIndex === 13" (click)="continueToNextSection()" expand="full">Continuar al siguiente
-          ítem</ion-button>
-      </ion-card-content>
-    </ion-card>
-
-    <!-- Finalización del test -->
-    <ion-card *ngIf="sectionIndex === 14" class="expanded-card">
-      <ion-card-header>
-        <ion-card-title>Final del Test</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-label>El test ha finalizado. Puedes generar un resumen en PDF.</ion-label>
-        <div class="button-container">
-          <ion-button (click)="finishTest()" expand="full">Generar Resumen en PDF</ion-button>
-        </div>
-      </ion-card-content>
-
-    </ion-card>
-
-
-    <div class="button-containerNQ">
-      <ion-button (click)="previousQuestion()" [disabled]="sectionIndex === 0">◀️</ion-button>
-      <ion-button (click)="nextQuestion()" [disabled]="sectionIndex === 9">▶️</ion-button>
-    </div>
+  </ion-card>
 
 
 
 
-<ion-footer>
-  <ion-toolbar>
-    <ion-title>Puntos actuales: {{ score }}</ion-title>
-  </ion-toolbar>
-</ion-footer>
+
+  <!-- Sección de Memoria Inmediata -->
+  <ion-card *ngIf="sectionIndex === 10" class="expanded-card">
+    <ion-card-header>
+      <ion-card-title>Item de Memoria Inmediata</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>Al paciente se le dicen 3 palabras: mesa, llave, libro. El terapeuta pone la respuesta y se comprueba
+        cuántas palabras correctas repitió, cada palabra vale 1 punto.</ion-label>
+      <ion-input [(ngModel)]="userMemoryAnswer" placeholder="Escriba la respuesta (separada por comas)"></ion-input>
+      <div class="button-container">
+        <ion-button (click)="checkMemoryAnswer()" expand="full">Comprobar Respuesta</ion-button>
+      </div>
+      <ion-item *ngIf="feedback[10]">
+        <ion-label>{{ feedback[10] }}</ion-label>
+      </ion-item>
+      <!-- Botón Continuar al final del ítem -->
+      <ion-button (click)="continueToNextSection()" expand="full">Continuar al siguiente ítem</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Sección de Atención y Cálculo -->
+  <ion-card *ngIf="sectionIndex === 11" class="expanded-card">
+    <ion-card-header>
+      <ion-card-title>Item de Atención y Cálculo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>Al paciente se le pide restar 7 a 100 cinco veces. Ejemplo: 100, 93, 86...</ion-label>
+      <ion-input [(ngModel)]="userAnswer" placeholder="Escriba la respuesta"></ion-input>
+      <div class="button-container">
+        <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘ RESPUESTA MALA</ion-button>
+        <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔ RESPUESTA BUENA</ion-button>
+      </div>
+      <!-- Botón Continuar al final del ítem -->
+      <ion-button *ngIf="sectionIndex === 11" (click)="continueToNextSection()" expand="full">Continuar al siguiente
+        ítem</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Sección de Recuerdo Diferido -->
+  <ion-card *ngIf="sectionIndex === 12" class="expanded-card">
+    <ion-card-header>
+      <ion-card-title>Item de Recuerdo Diferido</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>Se le pide al paciente recordar las tres palabras dichas previamente: mesa, llave, libro.</ion-label>
+      <ion-input [(ngModel)]="userMemoryAnswer" placeholder="Escriba la respuesta"></ion-input>
+      <div class="button-container">
+        <ion-button (click)="checkMemoryAnswer()" expand="full">Comprobar Respuesta</ion-button>
+      </div>
+      <!-- Botón Continuar al final del ítem -->
+      <ion-button *ngIf="sectionIndex === 12" (click)="continueToNextSection()" expand="full">Continuar al siguiente
+        ítem</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Sección de Lenguaje y Construcción -->
+  <ion-card *ngIf="sectionIndex === 13" class="expanded-card">
+    <ion-card-header>
+      <ion-card-title>Item de Lenguaje y Construcción</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>Se le pide al paciente repetir una frase y dibujar una figura específica.</ion-label>
+      <ion-input [(ngModel)]="userAnswer" placeholder="Escriba la respuesta"></ion-input>
+      <div class="button-container">
+        <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘ RESPUESTA MALA</ion-button>
+        <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔ RESPUESTA BUENA</ion-button>
+      </div>
+      <!-- Botón Continuar al final del ítem -->
+      <ion-button *ngIf="sectionIndex === 13" (click)="continueToNextSection()" expand="full">Continuar al siguiente
+        ítem</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Finalización del test -->
+  <ion-card *ngIf="sectionIndex === 14" class="expanded-card">
+    <ion-card-header>
+      <ion-card-title>Final del Test</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>El test ha finalizado. Puedes generar un resumen en PDF.</ion-label>
+      <div class="button-container">
+        <ion-button (click)="finishTest()" expand="full">Generar Resumen en PDF</ion-button>
+      </div>
+    </ion-card-content>
+
+  </ion-card>
+
+
+  <div class="button-containerNQ">
+    <ion-button (click)="previousQuestion()" [disabled]="sectionIndex === 0">◀️</ion-button>
+    <ion-button (click)="nextQuestion()" [disabled]="sectionIndex === 9">▶️</ion-button>
+  </div>
+
+
+
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title>Puntos actuales: {{ score }}</ion-title>
+    </ion-toolbar>
+  </ion-footer>
