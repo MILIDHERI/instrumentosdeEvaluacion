@@ -3,9 +3,12 @@
   height: 80vh; /* Ocupa el 80% de la altura de la pantalla */
   display: flex;
   flex-direction: column;
-  --background: linear-gradient(to right, #d0c4c441, #d4d4d4); /* Fondo degradado */
+  background-image: url('https://raw.githubusercontent.com/MILIDHERI/instrumentosdeEvaluacion/235bcc19eaaf3f94b2f5700d10b3bec0e56492a1/src/assets/image1/fondo%20para%20la%20app.jpg'); /* Fondo de la tarjeta */
+  background-size: cover;
+  background-position: center;
+  opacity: 1; /* Nivel de opacidad (1 = 100%) */
   color: black; /* Color de texto negro */
-
+  
   ion-card-header {
     display: flex;
     justify-content: center; /* Centra el contenido horizontalmente */
