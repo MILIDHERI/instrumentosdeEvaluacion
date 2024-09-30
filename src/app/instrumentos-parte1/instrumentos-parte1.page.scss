@@ -1,6 +1,6 @@
 /* Estilo general para tarjetas expandibles */
 .expanded-card {
-  
+
   height: 80vh;
   /* Ocupa el 80% de la altura de la pantalla */
   display: flex;
@@ -62,7 +62,7 @@
     /* Cambia el color del texto si lo deseas */
     margin-bottom: -33px;
     /* Espacio debajo de la etiqueta */
-    text-align: center; 
+    text-align: center;
     /* Centrar el contenido del texto */
   }
 
@@ -140,31 +140,31 @@
   }
 
 
-/* Estilo para el input dentro del ion-card-content */
-ion-card-content ion-input {
-  --border-color: #ff009575;
-  /* Color del borde */
-  --border-style: solid;
-  /* Estilo del borde */
-  --border-width: 2px;
-  /* Ancho del borde */
-  --border-radius: 50px;
-  /* Bordes redondeados */
-  --background: rgba(238, 192, 234, 0.5);
-  /* Fondo translúcido (50% opacidad) */
-  --padding-start: 20px;
-  /* Espaciado a la izquierda */
-  --padding-end: 20px;
-  /* Espaciado a la derecha */
-  --margin: 20px 0;
-  /* Margen superior e inferior */
-  width: 100%;
-  /* Ancho total */
-  height: 400px;
-  /* Altura de la caja (ajustado) */
-  font-size: 24px;
-  /* Tamaño de fuente (ajustado) */
-}
+  /* Estilo para el input dentro del ion-card-content */
+  ion-card-content ion-input {
+    --border-color: #ff009575;
+    /* Color del borde */
+    --border-style: solid;
+    /* Estilo del borde */
+    --border-width: 2px;
+    /* Ancho del borde */
+    --border-radius: 50px;
+    /* Bordes redondeados */
+    --background: rgba(238, 192, 234, 0.5);
+    /* Fondo translúcido (50% opacidad) */
+    --padding-start: 20px;
+    /* Espaciado a la izquierda */
+    --padding-end: 20px;
+    /* Espaciado a la derecha */
+    --margin: 20px 0;
+    /* Margen superior e inferior */
+    width: 100%;
+    /* Ancho total */
+    height: 400px;
+    /* Altura de la caja (ajustado) */
+    font-size: 24px;
+    /* Tamaño de fuente (ajustado) */
+  }
 
   /* Asegúrate de que el ion-input tenga un aspecto adecuado */
   ion-card-content {
