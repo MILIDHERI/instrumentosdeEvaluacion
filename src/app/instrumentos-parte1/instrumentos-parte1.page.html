@@ -116,10 +116,19 @@
   </ion-card>
 
   <!-- Contenedor de navegación entre preguntas -->
-  <div class="button-containerNQ">
-    <ion-button (click)="previousQuestion()" [disabled]="sectionIndex === 0"></ion-button>
-    <ion-button (click)="nextQuestion()" [disabled]="sectionIndex === 9"></ion-button>
-  </div>
+<!-- Contenedor de navegación entre preguntas -->
+<div class="button-containerNQ">
+  <ion-button (click)="previousQuestion()" [disabled]="sectionIndex === 0">
+    <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+    Anterior
+  </ion-button>
+  
+  <ion-button (click)="nextQuestion()" [disabled]="sectionIndex === 9">
+    Siguiente
+    <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+  </ion-button>
+</div>
+
 </ion-content>
 
 <ion-footer>

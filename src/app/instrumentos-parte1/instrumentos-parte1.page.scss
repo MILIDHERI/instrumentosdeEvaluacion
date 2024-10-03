@@ -92,19 +92,39 @@ ion-card-content ion-input {
   gap: 100px; /* Espacio de 10px entre los botones */
 }
 
-/* Estilos para el contenedor de botones */
+
+
+
+
+
+
+
+
+
+
+
+
 .button-containerNQ {
-  display: flex; /* Habilita Flexbox */
-  justify-content: space-between; /* Distribuir espacio entre botones */
-  width: 100%; /* Asegura que el contenedor use el ancho completo */
-  padding: 10px; /* Espaciado interno del contenedor */
-  position: fixed; /* Fijar la posición al final de la página */
-  bottom: 40px; /* Ajusta la posición desde la parte inferior */
-  left: 0; /* Alinear al lado izquierdo */
-  z-index: 100; /* Siempre por encima del contenido */
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+
+  ion-button {
+    --background: #a3d8f4; /* Color pastel azul */
+    --background-activated: #91c8e5; /* Color al hacer clic */
+    --background-focused: #bde4fa; /* Color al enfocar */
+    --background-hover: #d6f1fd; /* Color al pasar el cursor */
+    --color: #ffffff; /* Color del texto */
+    --border-radius: 12px; /* Bordes redondeados */
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+
+    ion-icon {
+      font-size: 20px; /* Tamaño del ícono */
+    }
+
+    &:disabled {
+      --background: #e8e8e8; /* Color gris para botones deshabilitados */
+      --color: #a3a3a3; /* Color de texto para botones deshabilitados */
+    }
+  }
 }
-
-
-
-
-
