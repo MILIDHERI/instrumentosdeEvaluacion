@@ -9,38 +9,25 @@
 </ion-header>
 
 <ion-content class="translucent-image">
-
-
   <!-- Sección de Orientación -->
   <ion-card *ngIf="sectionIndex >= 0 && sectionIndex <= 9" class="expanded-card">
-
-
     <ion-card-header>
       <ion-card-title>Item de Orientación</ion-card-title>
     </ion-card-header>
-
     <ion-card-content>
       <ion-label class="pregunta-label">Pregunta {{ sectionIndex + 1 }}:</ion-label><br>
-      <ion-label> {{ questions[sectionIndex] }}</ion-label><br>
+      <ion-label class="question-text">{{ questions[sectionIndex] }}</ion-label><br>
       <ion-label class="RespuestaCorrecta-label">(R: {{ correctAnswers[sectionIndex] }})</ion-label><br>
       <ion-input [(ngModel)]="userAnswer" placeholder="Escriba la respuesta"></ion-input>
-
-      <div class="button-container">
-        <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘ </ion-button>
-        <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔ </ion-button>
-      </div>
-
-      <!-- Botón Continuar al final del ítem -->
-      <ion-button *ngIf="sectionIndex === 9" (click)="continueToNextSection()" expand="full">
-        Continuar al siguiente ítem
-      </ion-button>
     </ion-card-content>
-
+    <div class="button-container">
+      <ion-button color="danger" (click)="checkAnswer('incorrect')" expand="full">✘</ion-button>
+      <ion-button color="success" (click)="checkAnswer('correct')" expand="full">✔</ion-button>
+    </div>
+    <!-- Botón Continuar al final del ítem -->
+    <ion-button *ngIf="sectionIndex === 9" (click)="continueToNextSection()" expand="full">Continuar al siguiente
+      ítem</ion-button>
   </ion-card>
-
-
-
-
 
   <!-- Sección de Memoria Inmediata -->
   <ion-card *ngIf="sectionIndex === 10" class="expanded-card">
@@ -126,20 +113,17 @@
         <ion-button (click)="finishTest()" expand="full">Generar Resumen en PDF</ion-button>
       </div>
     </ion-card-content>
-
   </ion-card>
 
-
+  <!-- Contenedor de navegación entre preguntas -->
   <div class="button-containerNQ">
-    <ion-button (click)="previousQuestion()" [disabled]="sectionIndex === 0">◀️</ion-button>
-    <ion-button (click)="nextQuestion()" [disabled]="sectionIndex === 9">▶️</ion-button>
+    <ion-button (click)="previousQuestion()" [disabled]="sectionIndex === 0"></ion-button>
+    <ion-button (click)="nextQuestion()" [disabled]="sectionIndex === 9"></ion-button>
   </div>
+</ion-content>
 
-
-
-
-  <ion-footer>
-    <ion-toolbar>
-
-    </ion-toolbar>
-  </ion-footer>
+<ion-footer>
+  <ion-toolbar>
+    <!-- Puede agregar elementos al pie de página aquí si es necesario -->
+  </ion-toolbar>
+</ion-footer>
